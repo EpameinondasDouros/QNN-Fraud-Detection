@@ -1,0 +1,8 @@
+name: Quantum-Fraud-Detection-Service-API
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.11
+  - pip>=21
+  - pip:
+      - -r requirements.txt
