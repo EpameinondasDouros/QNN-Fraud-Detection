@@ -9,7 +9,7 @@ from qiskit_ibm_runtime import QiskitRuntimeService
 # Save your IBM Quantum account
 QiskitRuntimeService.save_account(
     channel="ibm_quantum",
-    token="1004d2da57d3f215ce03658c1509b6fe50cdce85600a4676f0442b5970de17b88e77aa2055a42c112022e3200e241b3032abe469d9cb6255c6f95064dd7acb1f",
+    token="Input-IBM-API-Token",
     overwrite=True
 )
 
@@ -22,7 +22,7 @@ def install(package):
 def initialize_device(n_qubits, device_type="default"):
 
     install("planqk-quantum==2.15.0")
-    
+
     from planqk import PlanqkQuantumProvider
 
     """Initialize the quantum device, handling authentication errors properly."""
@@ -31,7 +31,7 @@ def initialize_device(n_qubits, device_type="default"):
     if device_type == "simulator":
         try:
             # Initialize the Planqk provider with your access token
-            provider = PlanqkQuantumProvider(access_token="plqk_0vthbqHwDoXvjLK5LVT4vqOs7BXX22Zr9Ud03LvEP7")
+            provider = PlanqkQuantumProvider(access_token="Input-Planqk-API-Token")
             
             # Retrieve and print available backends
             available_backends = provider.backends()
