@@ -37,7 +37,8 @@ def create_model(qlayer_long,X_train):
     print("Creating model")
     
     quantum_model_long = Sequential([
-        Dense(4, activation=tf.nn.relu, input_shape=(X_train.shape[1],)),
+        Dense(8, activation=tf.nn.relu, input_shape=(X_train.shape[1],)),
+        Dense(4, activation=tf.nn.relu),
         qlayer_long,
         Dense(2, activation=tf.nn.softmax)
     ])
@@ -72,5 +73,7 @@ def run_pipeline(finance_df, run_type):
         results = evaluation_functions.evaluate_model(quantum_model_long, X_test, y_test)
     else:
         results = evaluation_functions.predict_fraud(quantum_model_long, X_test, y_test)
+        for i, result in enumerate(results):
+            print(f"Prediction {i}: {result}")
 
     return results,testing

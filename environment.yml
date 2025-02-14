@@ -1,8 +1,8 @@
-name: Quantum-Fraud-Detection-Service-API
+name: qis-qfl-new
 channels:
   - conda-forge
 dependencies:
   - python=3.11.11
   - pip>=21
   - pip:
-      - -r requirements.txt
+      - -r requirements.txt  # Install everything else

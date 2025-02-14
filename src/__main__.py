@@ -24,6 +24,8 @@ with open(f"./input/data.json") as file:
 with open(f"./input/params.json") as file:
     params = json.load(file)
 
+
+
 print('*'*50)   
 print('Running main function')
 

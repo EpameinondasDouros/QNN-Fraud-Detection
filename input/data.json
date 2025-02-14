@@ -1,82 +1,17 @@
 {
     "transactions":[
-{
-    "step":"1",
-    "type":"TRANSFER",
-    "amount":"132355.33",
-    "nameOrig":"C820587705",
-    "oldbalanceOrg":"708022.87",
-    "newbalanceOrig":"575667.54",
-    "nameDest":"C1782113663",
-    "oldbalanceDest":"4408666.39",
-    "newbalanceDest":"3997768.55",
-    "isFraud":"0",
-    "isFlaggedFraud":"0"
-},
-{
-    "step":"251",
-    "type":"CASH_OUT",
-    "amount":"82112.74",
-    "nameOrig":"C1458675534",
-    "oldbalanceOrg":"82112.74",
-    "newbalanceOrig":"0.0",
-    "nameDest":"C1324801555",
-    "oldbalanceDest":"7968.15",
-    "newbalanceDest":"90080.89",
-    "isFraud":"1",
-    "isFlaggedFraud":"0"
-},
-{
-    "step":"684",
-    "type":"CASH_OUT",
-    "amount":"537025.01",
-    "nameOrig":"C1996857872",
-    "oldbalanceOrg":"537025.01",
-    "newbalanceOrig":"0.0",
-    "nameDest":"C1192227259",
-    "oldbalanceDest":"10631848.04",
-    "newbalanceDest":"11168873.06",
-    "isFraud":"1",
-    "isFlaggedFraud":"0"
-},
-{
-    "step":"209",
-    "type":"CASH_OUT",
-    "amount":"110732.86",
-    "nameOrig":"C237007179",
-    "oldbalanceOrg":"289.0",
-    "newbalanceOrig":"0.0",
-    "nameDest":"C517155653",
-    "oldbalanceDest":"0.0",
-    "newbalanceDest":"110732.86",
-    "isFraud":"0",
-    "isFlaggedFraud":"0"
-},
-{
-    "step":"456",
-    "type":"TRANSFER",
-    "amount":"4017972.88",
-    "nameOrig":"C571696283",
-    "oldbalanceOrg":"4017972.88",
-    "newbalanceOrig":"0.0",
-    "nameDest":"C340828714",
-    "oldbalanceDest":"0.0",
-    "newbalanceDest":"0.0",
-    "isFraud":"1",
-    "isFlaggedFraud":"0"
-},
-{
-    "step":"414",
-    "type":"TRANSFER",
-    "amount":"216000.95",
-    "nameOrig":"C666284351",
-    "oldbalanceOrg":"216000.95",
-    "newbalanceOrig":"0.0",
-    "nameDest":"C1896227461",
-    "oldbalanceDest":"0.0",
-    "newbalanceDest":"0.0",
-    "isFraud":"1",
-    "isFlaggedFraud":"0"
-}
-]
+        {
+            "step":"685",
+            "type":"CASH_OUT",
+            "amount":"47061.52",
+            "nameOrig":"C1390208933",
+            "oldbalanceOrg":"47061.52",
+            "newbalanceOrig":"0.0",
+            "nameDest":"C72626966",
+            "oldbalanceDest":"372871.76",
+            "newbalanceDest":"419933.28",
+            "isFraud":"1",
+            "isFlaggedFraud":"0"
+        }
+    ]
 }

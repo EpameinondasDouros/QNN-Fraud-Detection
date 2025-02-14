@@ -1,11 +1,14 @@
 """
 Template for implementing services running on the PlanQK platform
 """
+import qiskit
+import tensorflow as tf
 import time
 from loguru import logger
 import pandas as pd
 import pennylane as qml
 from pennylane import numpy as np
+import qiskit_ibm_runtime as qir
 from typing import Dict, Any, Union
 from .pipeline import run_pipeline
 from .libs.return_objects import ResultResponse, ErrorResponse
@@ -53,6 +56,12 @@ def run(data: Dict[str, Any] = None, params: Dict[str, Any] = None) -> Union[Res
 
 ##############################################################################################################
     print("Starting the pipeline")
+
+    print("PennyLane version:", qml.__version__)
+    print("Qiskit version:", qiskit.__version__)
+    print("TensorFlow version:", tf.__version__)
+    print("qiskit-ibm-runtime version:", qir.__version__)
+
  
     start_time = time.time()
  
@@ -70,7 +79,7 @@ def run(data: Dict[str, Any] = None, params: Dict[str, Any] = None) -> Union[Res
         }
         metadata = {
             "execution_time": exec_time,
-            "tools": "Pennylane",
+            "tools": f"Pennylane, Using the device: {run_type}",
         }
     else:
         result ={
@@ -79,7 +88,7 @@ def run(data: Dict[str, Any] = None, params: Dict[str, Any] = None) -> Union[Res
 
         metadata = {
             "execution_time": exec_time,
-            "tools": "Pennylane",
+            "tools": f"Pennylane,Using the device: {run_type}",
         }
     
     return ResultResponse(result=result, metadata=metadata)

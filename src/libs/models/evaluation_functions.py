@@ -43,5 +43,6 @@ def predict_fraud(model, X_test, y_test, batch_size=32):
 
         print(confusion_matrix(y_test, y_pred))
         print(classification_report(y_test, y_pred))
+        
         return y_pred
     

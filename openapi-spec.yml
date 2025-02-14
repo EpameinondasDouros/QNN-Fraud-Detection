@@ -9,13 +9,51 @@ components:
     inputData:
       type: object
       properties:
-        n_bits:
-          type: integer
-          minimum: 2
-          description: Number of qubits to use, defines the range of random numbers between 0 and 2^n_bits - 1
-          example: 8
+        transactions:
+          type: array
+          items:
+            type: object
+            properties:
+              step:
+                type: string
+                example: "685"
+              type:
+                type: string
+                example: "CASH_OUT"
+              amount:
+                type: string
+                example: "47061.52"
+              nameOrig:
+                type: string
+                example: "C1390208933"
+              oldbalanceOrg:
+                type: string
+                example: "47061.52"
+              newbalanceOrig:
+                type: string
+                example: "0.0"
+              nameDest:
+                type: string
+                example: "C72626966"
+              oldbalanceDest:
+                type: string
+                example: "372871.76"
+              newbalanceDest:
+                type: string
+                example: "419933.28"
+              isFraud:
+                type: string
+                example: "1"
+              isFlaggedFraud:
+                type: string
+                example: "0"
     inputParams:
       type: object
+      properties:
+        type:
+          type: string
+          description: "What device to be used for inference "
+          example: "default"
     interimResultResponse:
       type: object
     resultResponse:

@@ -1,25 +1,76 @@
+from asyncio.log import logger
 from itertools import combinations
 from ..imports import pd, np, tf, plt, sns, qml, Sequential, Dense, Dropout
-from planqk import PlanqkQuantumProvider
+
 n_qubits = 3
 
+from qiskit_ibm_runtime import QiskitRuntimeService
+
+# Save your IBM Quantum account
+QiskitRuntimeService.save_account(
+    channel="ibm_quantum",
+    token="1004d2da57d3f215ce03658c1509b6fe50cdce85600a4676f0442b5970de17b88e77aa2055a42c112022e3200e241b3032abe469d9cb6255c6f95064dd7acb1f",
+    overwrite=True
+)
+
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--no-deps"])
+
 def initialize_device(n_qubits, device_type="default"):
-    """Initialize the quantum device based on the backend type."""
+
+    install("planqk-quantum==2.15.0")
     
+    from planqk import PlanqkQuantumProvider
+
+    """Initialize the quantum device, handling authentication errors properly."""
+    logger.info("Initializing quantum device")
+
     if device_type == "simulator":
-        provider = PlanqkQuantumProvider(access_token="your_token")
-        backend = provider.get_backend("azure.ionq.simulator")
-        dev = qml.device("qiskit.remote", wires=n_qubits+1, backend=backend, shots=100)
+        try:
+            # Initialize the Planqk provider with your access token
+            provider = PlanqkQuantumProvider(access_token="plqk_0vthbqHwDoXvjLK5LVT4vqOs7BXX22Zr9Ud03LvEP7")
+            
+            # Retrieve and print available backends
+            available_backends = provider.backends()
+            print(f"Available backends: {available_backends}")
+            if not available_backends:
+                raise ValueError("PlanQK authentication failed: No backends available.")
+            
+            # Select the backend (ensure the name matches one of the available backends)
+            backend_name = "azure.ionq.simulator"
+            backend = provider.get_backend(backend_name)
+            if backend is None:
+                raise ValueError(f"PlanQK backend '{backend_name}' not available.")
 
-    elif device_type == "hardware":
-        provider = PlanqkQuantumProvider(access_token="your_token")
-        backend = provider.get_backend("azure.ionq.simulator")
-        dev = qml.device("qiskit.remote", wires=n_qubits+1, backend=backend, shots=100)
+            # Instantiate QiskitRuntimeService and print the active account info
+            service = QiskitRuntimeService()
+            print("Active Qiskit account:", service.active_account())
 
-    else:  # Default to PennyLane simulator
+            # Create a PennyLane device using the Qiskit remote backend
+            dev = qml.device("qiskit.remote", wires=n_qubits + 1, backend=backend, shots=100)
+            print("PennyLane device created:", dev)
+            
+        except Exception as e:
+            print("An error occurred:", e)
+
+    elif device_type=="hardware":
+        
+        service = QiskitRuntimeService(
+            channel="ibm_quantum",
+            token="1004d2da57d3f215ce03658c1509b6fe50cdce85600a4676f0442b5970de17b88e77aa2055a42c112022e3200e241b3032abe469d9cb6255c6f95064dd7acb1f"
+        )
+        print(service.backends())
+
+        backend = service.backend("ibm_brisbane")
+
+        dev = qml.device("qiskit.remote", wires=127, backend=backend,shots=1000)
+    
+    else:
         dev = qml.device("default.qubit", wires=n_qubits+1)
-
-    print(f"Quantum device initialized: {dev}")
+    print(f"✅ Quantum device initialized: {dev}")
     return dev
 
 
