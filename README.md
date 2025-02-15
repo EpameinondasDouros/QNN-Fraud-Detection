@@ -1,4 +1,4 @@
-# Quantum Neural Network for Fraud Detection
+# QFL-Fraud-Detection
 
 ## Overview
 This project was developed as part of the *Qinnovision World Challenge 2025*, specifically for the *Quantum Federated Learning for Fraud Detection* challenge. Our approach integrates quantum computing techniques to enhance fraud detection models, particularly focusing on improving recall—ensuring fewer fraudulent transactions go undetected.
@@ -39,9 +39,9 @@ Our model consists of three main components:
 - **Optimizing Federated Quantum Learning**: Investigating ways to reduce computational overhead and improve scalability in federated quantum machine learning applications.
 
 ## Technologies Used
-- **Quantum Computing**: IBM Qiskit, Pennylane
-- **Federated Learning**: TensorFlow Federated
-- **Machine Learning**: PyTorch, Scikit-Learn
+- **Quantum Computing**: Pennylane, IBM Quantum Platform
+- **Federated Learning**: Blockchain QHash, QKD
+- **Machine Learning**: Tensorflow
 - **Deployment**: IBM Cloud Quantum Services
 
 ## Team
@@ -49,4 +49,3 @@ Developed by *The Basement* as part of the *Qinnovision World Challenge 2025*.
 
 ---
 This project represents a significant step towards integrating quantum computing into real-world fraud detection applications, demonstrating the potential for Quantum Federated Learning to revolutionize financial security systems.
-
