@@ -19,7 +19,7 @@ import sys
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--no-deps"])
 
-def initialize_device(n_qubits, device_type="default"):
+def initialize_device(n_qubits, device_type="default",device_name="ibm_brisbane"):
 
     install("planqk-quantum==2.15.0")
 
@@ -60,7 +60,7 @@ def initialize_device(n_qubits, device_type="default"):
         
         service = QiskitRuntimeService(
             channel="ibm_quantum",
-            token="1004d2da57d3f215ce03658c1509b6fe50cdce85600a4676f0442b5970de17b88e77aa2055a42c112022e3200e241b3032abe469d9cb6255c6f95064dd7acb1f"
+            token="Your_IBMQ_API_Token"
         )
         print(service.backends())
 
@@ -229,9 +229,9 @@ def create_qlayer(X_train, n_qubits):
 
     return qlayer
 
-def create_qlayer_long(n_qubits=3,runtype="default"):
+def create_qlayer_long(n_qubits=3,runtype="default",device_name="ibm_brisbane"):
 
-    dev = initialize_device(n_qubits, device_type=runtype)
+    dev = initialize_device(n_qubits, device_type=runtype,device_name=device_name)
 
     n_layers = 1
     total_weights_long = 32

@@ -46,12 +46,23 @@ def run(data: Dict[str, Any] = None, params: Dict[str, Any] = None) -> Union[Res
     # logger.info(f"DataFrame preview:\n{finance_df.head()}")
     
     # Retrieve the 'type' parameter from params
-    if params and "type" in params:
-        run_type = params["type"]
+    # Retrieve the 'device' parameter from params
+    if params and "device" in params:
+        run_type = params["device"]
         logger.info(f"Run type: {run_type}")
     else:
         run_type = "default"
-        logger.warning("No 'type' parameter provided. Using default run type.")
+        logger.warning("No 'device' parameter provided. Using default run type.")
+
+    # Retrieve the 'hardware' parameter from params
+    if params and "hardware" in params:
+        device_name = params["hardware"]
+        logger.info(f"Device name: {device_name}")
+    else:
+        device_name = "ibm_brisbane"
+        logger.warning("No 'hardware' parameter provided. Using default device name.")
+
+    
     
 
 ##############################################################################################################
@@ -65,8 +76,7 @@ def run(data: Dict[str, Any] = None, params: Dict[str, Any] = None) -> Union[Res
  
     start_time = time.time()
  
-    results, testing = run_pipeline(finance_df, run_type=run_type)
-
+    results, testing = run_pipeline(finance_df, run_type=run_type,device_name=device_name)
     exec_time = time.time() - start_time
 
     logger.info("Printing the results")

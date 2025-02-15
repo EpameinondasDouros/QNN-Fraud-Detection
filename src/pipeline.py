@@ -57,13 +57,13 @@ def create_model(qlayer_long,X_train):
             
 
 
-def run_pipeline(finance_df, run_type):
+def run_pipeline(finance_df, run_type,device_name):
     
     print('Running main function')
 
     X_test, y_test, testing = load_data(finance_df)
 
-    qlayer_long=quantum_layers.create_qlayer_long(n_qubits=3,runtype=run_type)
+    qlayer_long=quantum_layers.create_qlayer_long(n_qubits=3,runtype=run_type,device_name="ibm_brisbane")
 
     quantum_model_long=create_model(qlayer_long,X_test)
 

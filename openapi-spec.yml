@@ -50,10 +50,15 @@ components:
     inputParams:
       type: object
       properties:
-        type:
+        device:
           type: string
-          description: "What device to be used for inference "
+          description: "What device to be used for inference"
           example: "default"
+        hardware:
+          type: string
+          description: "What hardware name device to be used for inference"
+          example: "ibm_brisbane"
+
     interimResultResponse:
       type: object
     resultResponse:
